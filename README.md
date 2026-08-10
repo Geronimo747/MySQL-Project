@@ -535,4 +535,3 @@ GROUP BY Country.Name;
 
 ---
 
-**Source:** Data Technician Workbook Week 3 (Databases and SQL). 
