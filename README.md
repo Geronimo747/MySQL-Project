@@ -1,169 +1,538 @@
-# 📊 MySQL Project Summary
+# 📊 SQL Query Examples & Explanations
 
-# 📘 Workbook Summary: Cloud Computing & Azure Data Fundamentals
-
-This workbook provided a comprehensive introduction to **cloud computing, Microsoft Azure, data legislation, and modern data technologies**. Throughout the week, I developed both theoretical knowledge and practical skills by researching cloud concepts, examining UK data laws, and completing hands-on Azure and Microsoft Fabric labs. 
-
-## ☁️ Cloud Computing Fundamentals
-
-The workbook began by exploring the foundations of cloud computing, including:
-
-- What cloud computing is and how it is used in real-world environments.
-- Business benefits such as reduced infrastructure costs, scalability, flexibility, and remote access to services.
-- Traditional on-premises infrastructure as an alternative to cloud solutions.
-- Major cloud providers including Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP). 
-
-I also learned how organisations estimate cloud costs using Azure's pricing calculator and examined the components required for a cloud-based Business Intelligence solution.
+This document demonstrates common SQL queries used for data retrieval, filtering, sorting, joining tables, and generating business reports. The examples are based on practical exercises completed using the Northwind and World databases. 
 
 ---
 
-## 🏗️ Cloud Service Models
+# 🔍 Basic Data Retrieval
 
-A key topic was understanding the three primary cloud service models:
+## Retrieve All Customer Data
 
-### Infrastructure as a Service (IaaS)
-- Virtual machines, storage, and networking provided through the cloud.
-- Gives organisations greater control over operating systems and infrastructure.
-- Suitable for migrations from on-premises environments. 
+### Purpose
+Return every column and every record from the Customers table.
 
-### Platform as a Service (PaaS)
-- Development platforms for building, testing, and deploying applications.
-- Eliminates the need to manage underlying infrastructure.
-  
-### Software as a Service (SaaS)
-- Fully managed software delivered through the internet.
-- Examples include Zoom, Spotify, and Microsoft 365. 
+```sql
+SELECT *
+FROM Customers;
+```
 
----
-
-## 🌐 Cloud Deployment Models
-
-The workbook covered different approaches to cloud deployment:
-
-- **Public Cloud**: Shared infrastructure managed by cloud providers.
-- **Private Cloud**: Dedicated cloud resources for a single organisation.
-- **Hybrid Cloud**: Combines on-premises, private, and public cloud environments.
-- **Community Cloud**: Shared infrastructure for organisations with common requirements. 
-
-This helped demonstrate how organisations select cloud architectures based on security, compliance, and scalability requirements.
+### Explanation
+- `SELECT *` returns all columns.
+- `FROM Customers` specifies the source table.
+- Useful for viewing all customer information.
 
 ---
 
-## 💼 Business Cloud Adoption
+## Retrieve Customer Names and Cities
 
-Using a client scenario, I learned how to:
+### Purpose
+Display only customer names and their cities.
 
-- Select suitable cloud service models based on business requirements.
-- Identify the benefits of moving services to the cloud.
-- Evaluate risks including security concerns, compliance requirements, and service outages.
-- Estimate cloud costs using Azure pricing tools. 
+```sql
+SELECT CustomerName, City
+FROM Customers;
+```
 
----
-
-## ⚖️ Data Protection, Privacy & IT Legislation
-
-A significant part of the workbook focused on UK legislation and ethical responsibilities when handling data.
-
-### Computer Misuse Act 1990
-- Unauthorised access to systems.
-- Access with intent to commit further offences.
-- Unauthorised modification of computer systems and data. 
-
-### Police and Justice Act 2006
-- Criminalisation of activities that impair computer systems.
-- Restrictions on hacking tools.
-- Stronger prosecution powers and penalties for cybercrime. 
-
-### Data Protection & GDPR
-- Types of employee data organisations can store.
-- Special category data requiring additional consent.
-- Principles of lawful, fair, and transparent data processing. 
-
-### Copyright & Software Licensing
-- Copyright infringement.
-- Software piracy.
-- Plagiarism.
-- Legal, financial, and security consequences of using unlicensed software.
-  
-### Consumer Rights & Health & Safety
-- Consumer Rights Act 2015.
-- Display Screen Equipment Regulations.
-- Employer responsibilities for employee wellbeing and workstation safety. 
+### Explanation
+- Returns selected columns instead of all data.
+- Useful for location-based marketing campaigns.
 
 ---
 
-## 🔷 Microsoft Azure Fundamentals
+## Retrieve Unique Cities
 
-The workbook introduced several core Microsoft Azure services used in modern data solutions.
+### Purpose
+Display a list of customer cities without duplicates.
 
-### Azure SQL Database
-- Managed relational database service.
-- Cloud-based database administration.
-- Data storage and querying capabilities. 
+```sql
+SELECT DISTINCT City
+FROM Customers;
+```
 
-### Azure Storage
-- Cloud storage solutions.
-- Blob storage concepts.
-- Data availability, durability, and access management. 
-
-### Azure Cosmos DB
-- Globally distributed NoSQL database service.
-- High availability and scalability.
-- Support for modern applications with flexible data models. 
+### Explanation
+- `DISTINCT` removes duplicate values.
+- Helps identify unique customer locations.
 
 ---
 
-## 📊 Microsoft Fabric & Analytics
+# 🎯 Filtering Data
 
-The workbook explored Microsoft's modern analytics platform and data ecosystem.
+## Products Above £50
 
-### Data Analytics in Microsoft Fabric
-- Consolidating data for analysis.
-- Working with cloud-based analytics tools.
-- Managing data throughout the analytics lifecycle. 
+### Purpose
+Identify high-value products.
 
-### Real-Time Analytics
-- Processing streaming data.
-- Monitoring events and business activity in real time.
-- Generating rapid insights from incoming information. 
+```sql
+SELECT *
+FROM Products
+WHERE Price > 50;
+```
 
-### Power BI Fundamentals
-- Data visualisation techniques.
-- Creating dashboards and reports.
-- Transforming raw data into meaningful business insights. 
+### Explanation
+- `WHERE` filters records.
+- Only products with a price greater than £50 are returned.
 
 ---
 
-## 🧪 Hands-On Azure Labs Completed
+## Customers From USA or UK
 
-Throughout the workbook, practical labs reinforced theoretical knowledge through direct experience with Microsoft technologies:
+### Purpose
+Find customers located in either the USA or the UK.
 
-✅ Explore Azure SQL Database  
-✅ Explore Azure Storage  
-✅ Explore Azure Cosmos DB  
-✅ Explore Data Analytics in Microsoft Fabric  
-✅ Explore Real-Time Analytics in Microsoft Fabric  
-✅ Explore Power BI Fundamentals and Data Visualisation 
+```sql
+SELECT *
+FROM Customers
+WHERE Country IN ('USA', 'UK');
+```
+
+### Explanation
+- `IN` allows multiple values in a condition.
+- Simplifies multiple OR conditions.
 
 ---
 
-## 🎓 Knowledge and Skills Gained
+## Products Between £20 and £50
 
-By completing this workbook, I gained an understanding of:
+### Purpose
+Retrieve mid-range products.
 
-- Cloud computing concepts and architectures
-- Cloud service and deployment models
-- Azure pricing and cost planning
-- Business cloud adoption strategies
-- Data privacy and GDPR compliance
-- Cybersecurity legislation and ethical responsibilities
-- Azure databases and storage services
-- NoSQL and relational data platforms
-- Microsoft Fabric analytics solutions
-- Real-time data processing
-- Power BI reporting and visualisation
-- Data-driven decision making in modern organisations 
+```sql
+SELECT *
+FROM Products
+WHERE Price BETWEEN 20 AND 50
+ORDER BY Price DESC;
+```
 
-## ✅ Overall Conclusion
+### Explanation
+- `BETWEEN` selects a range of values.
+- `ORDER BY Price DESC` sorts results from highest to lowest price.
 
-This workbook provided a strong foundation in **Cloud Computing and Azure Data Fundamentals**, combining cloud theory, legal and regulatory knowledge, and practical experience with Azure services. The activities and labs helped develop key skills required for a modern Data Technician role, particularly in cloud technologies, data management, analytics, security, and business intelligence. 
+---
+
+## Portland and Kirkland Customers
+
+### Purpose
+Retrieve USA customers located in Portland or Kirkland.
+
+```sql
+SELECT *
+FROM Customers
+WHERE Country = 'USA'
+  AND City IN ('Portland', 'Kirkland')
+ORDER BY CustomerName ASC;
+```
+
+### Explanation
+- Combines multiple filtering conditions.
+- Results are sorted alphabetically.
+
+---
+
+# 📈 Sorting Data
+
+## Recent Orders Report
+
+### Purpose
+Display the most recent orders first.
+
+```sql
+SELECT *
+FROM Orders
+ORDER BY OrderDate DESC;
+```
+
+### Explanation
+- `ORDER BY` sorts data.
+- `DESC` sorts from newest to oldest.
+
+---
+
+## Customers From UK or London
+
+### Purpose
+Retrieve customers located in the UK or London.
+
+```sql
+SELECT *
+FROM Customers
+WHERE Country = 'UK'
+   OR City = 'London'
+ORDER BY CustomerName DESC;
+```
+
+### Explanation
+- `OR` allows either condition to be true.
+- Results are sorted in reverse alphabetical order.
+
+---
+
+# 🤝 SQL JOIN Examples
+
+## Find Supplier for Each Product
+
+### Purpose
+Combine products with supplier information.
+
+```sql
+SELECT *
+FROM Products p
+INNER JOIN Suppliers s
+ON p.SupplierID = s.SupplierID;
+```
+
+### Explanation
+- `INNER JOIN` returns matching records from both tables.
+- Links products to their suppliers.
+
+---
+
+## Find Product Categories
+
+### Purpose
+Display products alongside their categories.
+
+```sql
+SELECT
+    Products.ProductName,
+    Categories.CategoryName
+FROM Products
+INNER JOIN Categories
+ON Products.CategoryID = Categories.CategoryID;
+```
+
+### Explanation
+- Combines product and category information.
+- Useful for inventory reporting.
+
+---
+
+## Meat/Poultry Products
+
+### Purpose
+Retrieve all products in the Meat/Poultry category.
+
+```sql
+SELECT Products.*, Categories.CategoryName
+FROM Products
+INNER JOIN Categories
+ON Products.CategoryID = Categories.CategoryID
+WHERE Categories.CategoryName = 'Meat/Poultry';
+```
+
+### Explanation
+- Uses a join and filter condition.
+- Returns only Meat/Poultry products.
+
+---
+
+## Complete Order Overview
+
+### Purpose
+Display order, customer, and employee information.
+
+```sql
+SELECT
+    Orders.OrderID,
+    Orders.OrderDate,
+    Customers.CustomerName,
+    Employees.FirstName,
+    Employees.LastName
+FROM Orders
+INNER JOIN Employees
+    ON Orders.EmployeeID = Employees.EmployeeID
+INNER JOIN Customers
+    ON Orders.CustomerID = Customers.CustomerID;
+```
+
+### Explanation
+- Combines three related tables.
+- Produces a detailed business report.
+
+---
+
+## Product, Category and Supplier Report
+
+### Purpose
+Create a complete product information report.
+
+```sql
+SELECT
+    Products.ProductName,
+    Categories.CategoryName,
+    Suppliers.SupplierName
+FROM Products
+INNER JOIN Categories
+    ON Products.CategoryID = Categories.CategoryID
+INNER JOIN Suppliers
+    ON Products.SupplierID = Suppliers.SupplierID;
+```
+
+### Explanation
+- Demonstrates multiple joins.
+- Provides complete product details.
+
+---
+
+# 📊 Aggregate Functions
+
+## Product Count by Category
+
+### Purpose
+Count products in each category.
+
+```sql
+SELECT
+    CategoryName,
+    COUNT(ProductID) AS ProductCount
+FROM Categories
+INNER JOIN Products
+ON Categories.CategoryID = Products.CategoryID
+GROUP BY CategoryName;
+```
+
+### Explanation
+- `COUNT()` totals records.
+- `GROUP BY` creates category summaries.
+
+---
+
+## Sales Volume Breakdown
+
+### Purpose
+Calculate product sales quantities and value.
+
+```sql
+SELECT
+    ProductName,
+    Price,
+    SUM(Quantity) AS Quantity,
+    SUM(Quantity * Price) AS Sales
+FROM Products p
+JOIN Order_Details od
+    ON p.ProductID = od.ProductID
+GROUP BY ProductName, Price
+ORDER BY Quantity DESC;
+```
+
+### Explanation
+- `SUM()` calculates totals.
+- Generates sales performance metrics.
+
+---
+
+# 🌍 World Database Queries
+
+## Count Cities in USA
+
+### Purpose
+Determine how many cities are recorded in the USA.
+
+```sql
+SELECT COUNT(City) AS Cities_In_USA
+FROM City
+WHERE CountryCode = 'USA';
+```
+
+### Explanation
+- Counts matching city records.
+
+---
+
+## Country With Highest Life Expectancy
+
+### Purpose
+Identify the country with the highest life expectancy.
+
+```sql
+SELECT Name, LifeExpectancy
+FROM Country
+WHERE LifeExpectancy IS NOT NULL
+ORDER BY LifeExpectancy DESC
+LIMIT 1;
+```
+
+### Explanation
+- Sorts countries by life expectancy.
+- Returns the highest result.
+
+---
+
+## Cities Containing "New"
+
+### Purpose
+Find cities containing the word "New".
+
+```sql
+SELECT
+    City.Name AS City_Name,
+    Country.Name AS Country_Name
+FROM City
+JOIN Country
+ON City.CountryCode = Country.Code
+WHERE City.Name LIKE '%New %';
+```
+
+### Explanation
+- `LIKE` searches using pattern matching.
+- `%` represents any characters.
+
+---
+
+## Top 10 Most Populated Cities
+
+### Purpose
+Display the most populated cities.
+
+```sql
+SELECT Name
+FROM City
+ORDER BY Population DESC
+LIMIT 10;
+```
+
+### Explanation
+- Sorts by population.
+- Returns the first ten results.
+
+---
+
+## Cities With Population Above 2 Million
+
+### Purpose
+Find large cities.
+
+```sql
+SELECT *
+FROM City
+WHERE Population > 2000000;
+```
+
+### Explanation
+- Filters cities exceeding 2 million residents.
+
+---
+
+## Cities Beginning With "Be"
+
+### Purpose
+Find cities starting with specific letters.
+
+```sql
+SELECT *
+FROM City
+WHERE Name LIKE 'Be%';
+```
+
+### Explanation
+- Searches for city names beginning with "Be".
+
+---
+
+## Cities Between 500k and 1M Population
+
+### Purpose
+Identify mid-sized cities.
+
+```sql
+SELECT *
+FROM City
+WHERE Population BETWEEN 500000 AND 1000000;
+```
+
+### Explanation
+- Returns cities within a specified population range.
+
+---
+
+## Most Populated City
+
+### Purpose
+Find the city with the highest population.
+
+```sql
+SELECT Name
+FROM City
+ORDER BY Population DESC
+LIMIT 1;
+```
+
+### Explanation
+- Returns the largest city by population.
+
+---
+
+## Country With Largest Population
+
+### Purpose
+Find the world's most populous country.
+
+```sql
+SELECT Name
+FROM Country
+ORDER BY Population DESC
+LIMIT 1;
+```
+
+### Explanation
+- Sorts countries by population size.
+
+---
+
+## Capital of Spain
+
+### Purpose
+Retrieve Spain's capital city.
+
+```sql
+SELECT City.Name
+FROM City
+JOIN Country
+ON City.ID = Country.Capital
+WHERE Country.Name = 'Spain';
+```
+
+### Explanation
+- Uses a join to match countries to capital cities.
+
+---
+
+## Average Population by Country
+
+### Purpose
+Calculate average city population for each country.
+
+```sql
+SELECT
+    Country.Name,
+    ROUND(AVG(City.Population)) AS Average_Population
+FROM Country
+JOIN City
+ON Country.Code = City.CountryCode
+GROUP BY Country.Name;
+```
+
+### Explanation
+- Uses `AVG()` to calculate averages.
+- Uses `GROUP BY` to summarize by country.
+
+---
+
+# ✅ Key SQL Concepts Demonstrated
+
+- 🔍 `SELECT`
+- 🎯 `WHERE`
+- 📑 `ORDER BY`
+- 📊 `COUNT()`
+- ➕ `SUM()`
+- 📈 `AVG()`
+- 🏷️ `GROUP BY`
+- 🔄 `DISTINCT`
+- 🤝 `INNER JOIN`
+- 🎚️ `BETWEEN`
+- 🔎 `LIKE`
+- 🔗 Multi-table joins
+- 📋 Business reporting queries
+
+---
+
+**Source:** Data Technician Workbook Week 3 (Databases and SQL). 
