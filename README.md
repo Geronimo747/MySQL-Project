@@ -1,10 +1,10 @@
-# 📊 SQL Query Examples & Explanations
+# SQL Query Examples & Explanations
 
 This document demonstrates common SQL queries used for data retrieval, filtering, sorting, joining tables, and generating business reports. The examples are based on practical exercises completed using the Northwind and World databases. 
 
 ---
 
-# 🔍 Basic Data Retrieval
+# Basic Data Retrieval
 
 ## Retrieve All Customer Data
 
@@ -55,7 +55,7 @@ FROM Customers;
 
 ---
 
-# 🎯 Filtering Data
+# Filtering Data
 
 ## Products Above £50
 
@@ -128,7 +128,7 @@ ORDER BY CustomerName ASC;
 
 ---
 
-# 📈 Sorting Data
+# Sorting Data
 
 ## Recent Orders Report
 
@@ -166,7 +166,7 @@ ORDER BY CustomerName DESC;
 
 ---
 
-# 🤝 SQL JOIN Examples
+# SQL JOIN Examples
 
 ## Find Supplier for Each Product
 
@@ -273,7 +273,7 @@ INNER JOIN Suppliers
 
 ---
 
-# 📊 Aggregate Functions
+# Aggregate Functions
 
 ## Product Count by Category
 
@@ -320,7 +320,7 @@ ORDER BY Quantity DESC;
 
 ---
 
-# 🌍 World Database Queries
+# World Database Queries
 
 ## Count Cities in USA
 
@@ -517,7 +517,7 @@ GROUP BY Country.Name;
 
 ---
 
-# ✅ Key SQL Concepts Demonstrated
+# Key SQL Concepts Demonstrated
 
 - 🔍 `SELECT`
 - 🎯 `WHERE`
