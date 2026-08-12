@@ -1,4 +1,4 @@
-# SQL Query Examples & Explanations
+# <img width="48" height="48" alt="image" src="https://github.com/user-attachments/assets/8879e4ab-b217-41b8-976f-5ab026ff641f" /> SQL Query Examples & Explanations
 
 This document demonstrates common SQL queries used for data retrieval, filtering, sorting, joining tables, and generating business reports. The examples are based on practical exercises completed using the Northwind and World databases. 
 
